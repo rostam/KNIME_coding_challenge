@@ -5,7 +5,12 @@ import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
 import java.util.Arrays;
 
-
+/**
+ * Main class for multithreading.
+ *
+ * @author Ali
+ * @version 1.0
+ */
 public class MultithreadingMain {
 
     public static void main(String[] args) throws IOException {

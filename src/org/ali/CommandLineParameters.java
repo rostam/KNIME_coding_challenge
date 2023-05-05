@@ -1,7 +1,10 @@
 package org.ali;
 
 /**
- * Commandline Parameters Handler
+ * Commandline Parameters Handler class.
+ *
+ * @author Ali
+ * @version 1.0
  */
 public class CommandLineParameters {
     String inputFile;

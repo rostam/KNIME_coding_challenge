@@ -4,6 +4,13 @@ import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.FileReader;
 
+/**
+ * File Processing Task
+ *  This class is used to process a file in a thread
+ *  It is used in the MultiThreading class
+ *  @author Ali
+ *  @version 1.0
+ */
 public class FileProcessingTask implements Runnable {
 
     private final String inputFileName;

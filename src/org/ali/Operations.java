@@ -3,6 +3,13 @@ package org.ali;
 import java.util.List;
 import java.util.stream.Collectors;
 
+
+/**
+ * Operations class.
+ *
+ * @version 1.0
+ * @author Ali
+ */
 public class Operations {
     public String operationStrings;
     public String inputType;
