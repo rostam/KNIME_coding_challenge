@@ -1,2 +1,2 @@
-# KNIME_coding_challenge
-KNIME_coding_challenge
+# KNIME Coding Challenge
+
