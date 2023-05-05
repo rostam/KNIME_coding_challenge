@@ -32,15 +32,12 @@ public class Operations {
             decimalStrOfInteger = decimalStrOfInteger.substring(1);
             isNegated = true;
         }
-
         decimalStrOfInteger =  new StringBuilder(decimalStrOfInteger).reverse().toString();
-
         int i = 0;
         for(;i<decimalStrOfInteger.length();i++)
             if(decimalStrOfInteger.charAt(i) != '0') break;
 
         decimalStrOfInteger = decimalStrOfInteger.substring(i);
-
         if(isNegated) decimalStrOfInteger = "-" + decimalStrOfInteger;
 
         return decimalStrOfInteger;
@@ -52,7 +49,7 @@ public class Operations {
      * @return a list of reversed decimal strings
      */
     public List<String> reverseArrayOfDecimalStringOfNumber(List<String> listOfDcimalStrOfIntegers) {
-        return reverseString(listOfDcimalStrOfIntegers).stream().map(Operations::reverseDecimalStrOfInteger).toList();
+        return listOfDcimalStrOfIntegers.stream().map(Operations::reverseDecimalStrOfInteger).toList();
     }
 
     /**
@@ -60,7 +57,7 @@ public class Operations {
      * @param s the given list of strings
      * @return the capitalized list of strings
      */
-    public static List<String> Capitalize(List<String> s) {
+    public static List<String> capitalize(List<String> s) {
         return s.stream().map(String::toUpperCase).collect(Collectors.toList());
     }
 
@@ -80,7 +77,7 @@ public class Operations {
                 }
             } else if(op.toLowerCase().contains("cap")) {
                 if(inputType.contains("str")) {
-                    return Capitalize(listOfStr);
+                    return capitalize(listOfStr);
                 } else {
                     throw new Exception("Cannot capitalize a list of numbers");
                 }
@@ -99,4 +96,41 @@ public class Operations {
         }
         return null;
     }
+
+    /**
+     * Apply the given operations on the given string
+     * @param str  a given string
+     * @return the result of applying the given operations on the given string
+     * @throws Exception
+     */
+    public String applyForMultiThreading(String str) throws Exception {
+        for(String op : operationStrings.split(",")) {
+            if (op.toLowerCase().contains("rev")) {
+                if(inputType.contains("str")) {
+                    return new StringBuilder(str).reverse().toString();
+                } else {
+                    return reverseDecimalStrOfInteger(str);
+                }
+            } else if(op.toLowerCase().contains("cap")) {
+                if(inputType.contains("str")) {
+                    return str.toUpperCase();
+                } else {
+                    throw new Exception("Cannot capitalize a list of numbers");
+                }
+            } else if(op.toLowerCase().contains("neg")) {
+                if(inputType.contains("str")) {
+                    throw new Exception("Cannot negate a list of strings");
+                } else {
+                    if(inputType.contains("double"))
+                        return  String.valueOf(-Double.parseDouble(str));
+                    else if(inputType.contains("int"))
+                        return String.valueOf(-Integer.parseInt(str));
+                    else
+                        throw new Exception("Unknown input type");
+                }
+            }
+        }
+        return null;
+    }
 }
+

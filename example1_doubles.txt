@@ -1,4 +1,0 @@
-foo
-bar
-42
-Hello world
