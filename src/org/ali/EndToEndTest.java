@@ -14,17 +14,11 @@ class EndToEndTest {
 
     @org.junit.jupiter.api.BeforeEach
     void setUp() {
-        // --input example1_strings.txt --inputtype string --operations rev --threads 4 --output output.txt
+
     }
 
     @org.junit.jupiter.api.Test
     void capitalizeStrings() {
-        CommandLineParameters testingInputTypeString =
-                new CommandLineParameters(
-                        new String[]{"--input", "example1_strings.txt",
-                                "--inputtype", "string", "--operations", "cap",
-                                "--threads", "1", "--output", "output.txt"});
-
         List<String> inputs = Arrays.asList("hello", "world");
         List<String> expected = Arrays.asList("HELLO", "WORLD");
         assertEquals(expected, Operations.capitalize(inputs));

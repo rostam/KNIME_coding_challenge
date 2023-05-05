@@ -11,8 +11,8 @@ import java.util.stream.Collectors;
  * @author Ali
  */
 public class Operations {
-    public String operationStrings;
-    public String inputType;
+    public final String operationStrings;
+    public final String inputType;
 
     public Operations(String operationStrings, String inputType) {
         this.operationStrings = operationStrings;

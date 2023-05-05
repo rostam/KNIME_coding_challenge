@@ -7,10 +7,10 @@ package org.ali;
  * @version 1.0
  */
 public class CommandLineParameters {
-    String inputFile;
-    String inputType;
+    final String inputFile;
+    final String inputType;
     Operations operations;
-    int numberOfThreads;
+    final int numberOfThreads;
     String outputFile = null;
 
     /**

@@ -22,7 +22,7 @@ public class FileProcessingTask implements Runnable {
     private final BufferedWriter writer;
 
     public FileProcessingTask(String inputFileName, long startLine, long endLine, Operations operations,
-                              String outputFileName, BufferedWriter writer) {
+                              BufferedWriter writer) {
         this.inputFileName = inputFileName;
         this.startLine = startLine;
         this.endLine = endLine;
@@ -40,7 +40,6 @@ public class FileProcessingTask implements Runnable {
 
             while ((line = reader.readLine()) != null) {
                 if (lineNumber >= startLine && lineNumber <= endLine) {
-                    System.out.println(Thread.currentThread().getName() + ": " + line);
                     line = operations.applyForMultiThreading(line);
                     synchronized(writer) {
                         if(line.length() >= 1)

@@ -13,7 +13,7 @@ import java.util.Arrays;
  */
 public class MultithreadingMain {
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws Exception {
 
         CommandLineParameters commandLineParameters = new CommandLineParameters(args);
 
@@ -38,7 +38,7 @@ public class MultithreadingMain {
                 }
 
                 Runnable threadTask = new FileProcessingTask(commandLineParameters.inputFile, startLine, endLine,
-                        commandLineParameters.operations, commandLineParameters.outputFile, writer);
+                        commandLineParameters.operations, writer);
                 threads[i] = new Thread(threadTask);
                 threads[i].start(); // start the thread
             }
