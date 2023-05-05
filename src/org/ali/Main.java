@@ -17,7 +17,12 @@ public class Main {
 
 		List<String> inputs = Files.readAllLines(Paths.get(commandLineParameters.inputFile));
 		inputs.forEach(s -> Statistics.getInstance().updateStatisticsWithLine(s));
-		Files.write(Paths.get(commandLineParameters.outputFile),commandLineParameters.operations.apply(inputs));
+		if(commandLineParameters.outputFile != null) {
+			Files.write(Paths.get(commandLineParameters.outputFile), commandLineParameters.operations.apply(inputs));
+		}
+		else {
+			commandLineParameters.operations.apply(inputs).forEach(System.out::println);
+		}
 
 		// DO NOT CHANGE THE FOLLOWING LINES OF CODE
 		System.out.println(String.format("Processed %d lines (%d of which were unique)", //

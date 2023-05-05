@@ -1,7 +1,5 @@
 package org.ali;
 
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -66,6 +64,12 @@ public class Operations {
         return s.stream().map(String::toUpperCase).collect(Collectors.toList());
     }
 
+    /**
+     * Apply the given operations on the given list of strings
+     * @param listOfStr  the given list of strings
+     * @return the result of applying the given operations on the given list of strings
+     * @throws Exception
+     */
     public List<String> apply(List<String> listOfStr) throws Exception {
         for(String op : operationStrings.split(",")) {
             if (op.toLowerCase().contains("rev")) {
@@ -74,13 +78,22 @@ public class Operations {
                 } else {
                     return reverseArrayOfDecimalStringOfNumber(listOfStr);
                 }
-            }
-
-            if(op.toLowerCase().contains("cap")) {
+            } else if(op.toLowerCase().contains("cap")) {
                 if(inputType.contains("str")) {
                     return Capitalize(listOfStr);
                 } else {
                     throw new Exception("Cannot capitalize a list of numbers");
+                }
+            } else if(op.toLowerCase().contains("neg")) {
+                if(inputType.contains("str")) {
+                    throw new Exception("Cannot negate a list of strings");
+                } else {
+                    if(inputType.contains("double"))
+                        return listOfStr.stream().map(s -> String.valueOf(-Double.parseDouble(s))).collect(Collectors.toList());
+                    else if(inputType.contains("int"))
+                        return listOfStr.stream().map(s -> String.valueOf(-Integer.parseInt(s))).collect(Collectors.toList());
+                    else
+                        throw new Exception("Unknown input type");
                 }
             }
         }
