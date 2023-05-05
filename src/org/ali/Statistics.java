@@ -1,4 +1,4 @@
-package org.yourname;
+package org.ali;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -48,6 +48,6 @@ public class Statistics {
 	 */
 	public static Statistics getInstance() {
 		// FIXME: needs to be implemented
-		return null;
+		return new Statistics();
 	}
 }
