@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.List;
-import java.util.stream.Collectors;
 
 /**
  * Main class.
@@ -13,7 +12,7 @@ import java.util.stream.Collectors;
  */
 public class Main {
 
-	public static void main(String[] args) throws IOException {
+	public static void main(String[] args) throws Exception {
 		CommandLineParameters commandLineParameters = new CommandLineParameters(args);
 
 		List<String> inputs = Files.readAllLines(Paths.get(commandLineParameters.inputFile));
