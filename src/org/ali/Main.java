@@ -1,15 +1,9 @@
 package org.ali;
 
-import java.io.BufferedInputStream;
-import java.io.File;
 import java.io.IOException;
-import java.io.InputStream;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
-import java.util.function.Function;
 import java.util.stream.Collectors;
 
 /**
@@ -20,19 +14,12 @@ import java.util.stream.Collectors;
 public class Main {
 
 	public static void main(String[] args) throws IOException {
-		// add your code here
-		for(String a : args) {
-			System.out.println(a);
-		}
+		CommandLineParameters commandLineParameters = new CommandLineParameters(args);
 
-		List<String> inputs = Files.readAllLines(Paths.get(args[1]));
-		String operations = args[5];
-		for(String op : operations.split(",")) {
-			if(op.toLowerCase().contains("rev")) {
-				Files.write(Paths.get(args[9]),inputs.stream().map(s -> new StringBuilder(s).reverse().toString()).collect(Collectors.toList()));
-			}
-		}
-		
+		List<String> inputs = Files.readAllLines(Paths.get(commandLineParameters.inputFile));
+		inputs.forEach(s -> Statistics.getInstance().updateStatisticsWithLine(s));
+		Files.write(Paths.get(commandLineParameters.outputFile),commandLineParameters.operations.apply(inputs));
+
 		// DO NOT CHANGE THE FOLLOWING LINES OF CODE
 		System.out.println(String.format("Processed %d lines (%d of which were unique)", //
 				Statistics.getInstance().getNoOfLinesRead(), //

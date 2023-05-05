@@ -9,10 +9,12 @@ import java.util.Set;
  * @author KNIME GmbH
  */
 public class Statistics {
+	public static Statistics statistics = new Statistics();
 
 	private final Set<String> linesRead = new HashSet<>();
 
 	private int lineCounter;
+
 
 	/**
 	 * Updates statistics with respect to the given line. This method is supposed to
@@ -47,7 +49,6 @@ public class Statistics {
 	 * @return the shared {@link Statistics} instance to use.
 	 */
 	public static Statistics getInstance() {
-		// FIXME: needs to be implemented
-		return new Statistics();
+		return statistics;
 	}
 }
